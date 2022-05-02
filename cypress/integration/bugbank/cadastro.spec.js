@@ -1,171 +1,137 @@
 /// <reference types="cypress" />
 
-const { should } = require("chai")
-
-//$("li.nav-item.active")
-//$("a[data-target='#exampleModal']")
-//$("a[data-target='#videoModal']")
-//$("a:contains(Phones)")
-
-//Crie um teste que clique em "About us" e verifique se é possível fechar a modal através de um evento de clique.
-
 describe('Pagina de cadastro', () => {
-   
-    xit('O campo E-mail deve ser de preenchimento obrigatorio', () => {
+    
+    beforeEach(() => {
         cy.visit("")
-        cy.get(".login__buttons .style__ContainerButton-sc-1wsixal-0.ihdmxA.button__child").click()
-        cy.wait(1000)
-        //cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='email']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='name']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='password']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='passwordConfirmation']").click({force: true}).type("dsfhl")
-        cy.get(".style__ContainerButton-sc-1wsixal-0.CMabB.button__child").click({force: true})
-        cy.get('.style__ContainerFieldInput-sc-s3e9ea-0.gQAEIG.input__child').should('have.length', 5)
-        cy.wait(4000)
-        cy.contains("Email não pode ser vazio")
+        //botão de cadastro
+        cy.contains("button", "Registrar").click();
+    });
+
+    it('O campo E-mail deve ser de preenchimento obrigatorio', () => {
+        
+        cy.get(".card__register input[type='name']").click({force: true}).type("dsfhl")
+        cy.get(".card__register input[name='password']").click({force: true}).type("dsfhl")
+        cy.get(".card__register input[name='passwordConfirmation']").click({force: true}).type("dsfhl")
+        
+        cy.contains("button","Cadastrar").click({force: true})
+        
+        cy.contains("Email não pode ser vazio").should("be.visible");
     })
 
-    xit('O campo nome deve ser de preenchimento obrigatorio', () => {
-        cy.visit("")
-        cy.get(".login__buttons .style__ContainerButton-sc-1wsixal-0.ihdmxA.button__child").click()
-        cy.wait(1000)
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='email']").click({force: true}).type("dsfhl@hsgsg.com")
-        //cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='name']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='password']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='passwordConfirmation']").click({force: true}).type("dsfhl")
-        cy.get(".style__ContainerButton-sc-1wsixal-0.CMabB.button__child").click({force: true})
-        cy.get('.style__ContainerFieldInput-sc-s3e9ea-0.gQAEIG.input__child').should('have.length', 6)
-        cy.contains("Nome não pode ser vazio")
+    it('O campo nome deve ser de preenchimento obrigatorio', () => {
+       
+        cy.get(".card__register input[type='email']").click({force: true}).type("dsfhl@hsgsg.com")
+        cy.get(".card__register input[name='password']").click({force: true}).type("dsfhl")
+        cy.get(".card__register input[name='passwordConfirmation']").click({force: true}).type("dsfhl")
+        
+        cy.contains("button","Cadastrar").click({force: true})
+        
+        cy.contains("Nome não pode ser vazio").should("be.visible");
     })
 
-    xit('O campo senha deve ser de preenchimento obrigatorio', () => {
-        cy.visit("")
-        cy.get(".login__buttons .style__ContainerButton-sc-1wsixal-0.ihdmxA.button__child").click()
-        cy.wait(1000)
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='email']").click({force: true}).type("dsfhl@hsgsg.com")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='name']").click({force: true}).type("dsfhl")
-        //cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='password']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='passwordConfirmation']").click({force: true}).type("dsfhl")
-        cy.get(".style__ContainerButton-sc-1wsixal-0.CMabB.button__child").click({force: true})
-        cy.get('.style__ContainerFieldInput-sc-s3e9ea-0.gQAEIG.input__child').should('have.length', 5)
-        cy.contains("Senha não pode ser vazio")
+    it('O campo senha deve ser de preenchimento obrigatorio', () => {
+        
+        cy.get(".card__register input[type='email']").click({force: true}).type("dsfhl@hsgsg.com")
+        cy.get(".card__register input[type='name']").click({force: true}).type("dsfhl")
+        cy.get(".card__register input[name='passwordConfirmation']").click({force: true}).type("dsfhl")
+        
+        cy.contains("button","Cadastrar").click({force: true})
+
+        cy.contains("Senha não pode ser vazio").should("be.visible");
     })
 
-    xit('O campo confirmação de senha deve ser de preenchimento obrigatorio', () => {
-        cy.visit("")
-        cy.get(".login__buttons .style__ContainerButton-sc-1wsixal-0.ihdmxA.button__child").click()
-        cy.wait(1000)
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='email']").click({force: true}).type("dsfhl@hsgsg.com")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='name']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='password']").click({force: true}).type("dsfhl")
-        //cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='passwordConfirmation']").click({force: true}).type("dsfhl")
-        cy.get(".style__ContainerButton-sc-1wsixal-0.CMabB.button__child").click({force: true})
-        cy.get('.style__ContainerFieldInput-sc-s3e9ea-0.gQAEIG.input__child').should('have.length', 5)
-        cy.contains("Confirmar senha não pode ser vazio")
+    it('O campo confirmação de senha deve ser de preenchimento obrigatorio', () => {
+       
+        cy.get(".card__register input[type='email']").click({force: true}).type("dsfhl@hsgsg.com")
+        cy.get(".card__register input[type='name']").click({force: true}).type("dsfhl")
+        cy.get(".card__register input[name='password']").click({force: true}).type("dsfhl")
+
+        cy.contains("button","Cadastrar").click({force: true})
+
+        cy.contains("Confirmar senha não pode ser vazio").should("be.visible");
     })
     
-    xit("Criar conta com saldo", () => {
-        cy.visit("")
-        
-        //botão de cadastrar
-        cy.get(".login__buttons .style__ContainerButton-sc-1wsixal-0.ihdmxA.button__child").click()
-        cy.wait(1000)
-        
+    it("Criar conta com saldo", () => {
+      
         //preencher formulário de cadastro
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='email']").click({force: true}).type("oi@h.com")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='name']").click({force: true}).type("davidson")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='password']").click({force: true}).type("123")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='passwordConfirmation']").click({force: true}).type("123")
+        cy.get(".card__register input[type='email']").click({force: true}).type("oi@h.com")
+        cy.get(".card__register input[type='name']").click({force: true}).type("davidson")
+        cy.get(".card__register input[name='password']").click({force: true}).type("123")
+        cy.get(".card__register input[name='passwordConfirmation']").click({force: true}).type("123")
+        
         //botão de criar conta com saldo
-        cy.get(".styles__ContainerToggle-sc-7fhc7g-2.cJsFYf #toggleAddBalance").click({force: true})
+        cy.get("#toggleAddBalance").click({force: true})
         //botão de cadastro
-        cy.get(".style__ContainerButton-sc-1wsixal-0.CMabB.button__child").click({force: true})
-        cy.wait(1000)
+        cy.contains("button","Cadastrar").click({force: true})
+       
         //fecha o modal de sucesso de cadastro
         cy.get("#btnCloseModal").click()
 
         //informações de login com o cadastro criado
-        cy.get(".card__login .input__default[type='email']").click({force: true}).type("oi@h.com")
-        cy.get(".card__login .input__default[name='password']").click({force: true}).type("123")
+        cy.get(".card__login input[type='email']").click({force: true}).type("oi@h.com")
+        cy.get(".card__login input[name='password']").click({force: true}).type("123")
         //botão de login
-        cy.get(".login__buttons .style__ContainerButton-sc-1wsixal-0.otUnI.button__child").click()
+        cy.contains("button", "Acessar").click();
         //texto do saldo em conta
-        cy.get("#textBalance").contains("Saldo em conta R$ 1.000,00");
+        cy.contains("#textBalance", "Saldo em conta R$ 1.000,00").should("be.visible");
     })
 
-    xit("Criar conta sem saldo", () => {
-        cy.visit("")
-        
-        //botão de cadastrar
-        cy.get(".login__buttons .style__ContainerButton-sc-1wsixal-0.ihdmxA.button__child").click()
-        cy.wait(1000)
+    it("Criar conta sem saldo", () => {
         
         //preencher formulário de cadastro
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='email']").click({force: true}).type("oi@h.com")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='name']").click({force: true}).type("davidson")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='password']").click({force: true}).type("123")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='passwordConfirmation']").click({force: true}).type("123")
+        cy.get(".card__register input[type='email']").click({force: true}).type("oi@h.com");
+        cy.get(".card__register input[type='name']").click({force: true}).type("davidson");
+        cy.get(".card__register input[name='password']").click({force: true}).type("123");
+        cy.get(".card__register input[name='passwordConfirmation']").click({force: true}).type("123");
+        
         //botão de cadastro
-        cy.get(".style__ContainerButton-sc-1wsixal-0.CMabB.button__child").click({force: true})
-        cy.wait(1000)
+        cy.contains("button","Cadastrar").click({force: true});
+       
         //fecha o modal de sucesso de cadastro
-        cy.get("#btnCloseModal").click()
+        cy.get("#btnCloseModal").click();
 
         //informações de login com o cadastro criado
-        cy.get(".card__login .input__default[type='email']").click({force: true}).type("oi@h.com")
-        cy.get(".card__login .input__default[name='password']").click({force: true}).type("123")
+        cy.get(".card__login input[type='email']").click({force: true}).type("oi@h.com")
+        cy.get(".card__login input[name='password']").click({force: true}).type("123")
         //botão de login
-        cy.get(".login__buttons .style__ContainerButton-sc-1wsixal-0.otUnI.button__child").click()
+        cy.contains("button", "Acessar").click();
         //texto do saldo em conta
-        cy.get("#textBalance").contains("Saldo em conta R$ 0,00");
+        cy.contains("#textBalance", "Saldo em conta R$ 0,00").should("be.visible");
     })
 
-    xit('O campo senha e confirmação de senha não são iguais', () => {
-        cy.visit("")
-        //botão de cadastro
-        cy.get(".login__buttons .style__ContainerButton-sc-1wsixal-0.ihdmxA.button__child").click()
-        cy.wait(1000)
+    it('O campo senha e confirmação de senha não são iguais', () => {
 
         //campos do formulário de cadastro
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='email']").click({force: true}).type("dsfhl@hsgsg.com")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='name']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='password']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='passwordConfirmation']").click({force: true}).type("dsfhls")
+        cy.get(".card__register input[type='email']").click({force: true}).type("dsfhl@hsgsg.com")
+        cy.get(".card__register input[type='name']").click({force: true}).type("dsfhl")
+        cy.get(".card__register input[name='password']").click({force: true}).type("dsfhl")
+        cy.get(".card__register input[name='passwordConfirmation']").click({force: true}).type("dsfhls")
        
         //botão de cadastrar
-        cy.get(".style__ContainerButton-sc-1wsixal-0.CMabB.button__child").click({force: true})
-
-        //espera o modal aparecer
-        cy.wait(1000)
+        cy.contains("button","Cadastrar").click({force: true});
 
         //texto do modal
-        cy.get("#modalText").contains("As senhas não são iguais.");
+        cy.contains("#modalText", "As senhas não são iguais.");
     });
 
     it('Cadastro criado exibe mensagem de sucesso', () => {
-        cy.visit("")
-        //botão de cadastro
-        cy.get(".login__buttons .style__ContainerButton-sc-1wsixal-0.ihdmxA.button__child").click()
-        cy.wait(1000)
 
         //campos do formulário de cadastro
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='email']").click({force: true}).type("dsfhl@hsgsg.com")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[type='name']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='password']").click({force: true}).type("dsfhl")
-        cy.get(".styles__ContainerFormRegister-sc-7fhc7g-0.keVbpY input[name='passwordConfirmation']").click({force: true}).type("dsfhl")
+        cy.get(".card__register input[type='email']").click({force: true}).type("dsfhl@hsgsg.com")
+        cy.get(".card__register input[type='name']").click({force: true}).type("dsfhl")
+        cy.get(".card__register input[name='password']").click({force: true}).type("dsfhl")
+        cy.get(".card__register input[name='passwordConfirmation']").click({force: true}).type("dsfhl")
        
         //botão de cadastrar
-        cy.get(".style__ContainerButton-sc-1wsixal-0.CMabB.button__child").click({force: true})
+        cy.contains("button", "Cadastrar").click({force: true})
 
-        //espera o modal aparecer
-        cy.wait(1000)
-        
         //esse regex foi utilizado para facilitar a identificação do número da conta
         //pois esse número tem o seguinte formato: de 1 a 3 digitos de 0 a 9 seguido de um traço('-') 
         //seguido de mais um digito de 0 a 9
         var regex = /[A conta ][0-9]{1,3}-[0-9]{1}[ foi criada com sucesso]/;
         //texto do modal
-        cy.get("#modalText").contains(regex);
+        cy.contains("#modalText", regex).should("be.visible");
     });
 })
 
