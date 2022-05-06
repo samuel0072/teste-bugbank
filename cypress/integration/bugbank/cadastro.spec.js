@@ -129,7 +129,7 @@ describe('Pagina de cadastro', () => {
         //esse regex foi utilizado para facilitar a identificação do número da conta
         //pois esse número tem o seguinte formato: de 1 a 3 digitos de 0 a 9 seguido de um traço('-') 
         //seguido de mais um digito de 0 a 9
-        var regex = /[A conta ][0-9]{1,3}-[0-9]{1}[ foi criada com sucesso]/;
+        var regex = /A conta [0-9]{1,3}-[0-9]{1} foi criada com sucesso/;
         //texto do modal
         cy.contains("#modalText", regex).should("be.visible");
     });
